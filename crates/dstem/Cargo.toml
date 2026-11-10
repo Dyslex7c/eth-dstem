@@ -1,0 +1,15 @@
+[package]
+name = "dstem"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Origin-private transaction propagation middleware implementing eth/68s stem-phase routing for Ethereum execution clients"
+
+[dependencies]
+tokio = { version = "1.0", features = ["sync", "time", "rt"] }
+parking_lot = "0.12"
+rand = "0.8"
+bytes = "1.5"

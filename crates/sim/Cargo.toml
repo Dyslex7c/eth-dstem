@@ -1,0 +1,31 @@
+[package]
+name = "eth-tx-sim"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Discrete-event P2P network simulation and benchmark harness for Ethereum transaction diffusion and Dandelion++ stem routing"
+
+[[bin]]
+name = "run_baseline"
+path = "src/bin/run_baseline.rs"
+
+[[bin]]
+name = "run_dandelion"
+path = "src/bin/run_dandelion.rs"
+
+[[bin]]
+name = "run_sybil_sweep"
+path = "src/bin/run_sybil_sweep.rs"
+
+[[bin]]
+name = "run_timing_sweep"
+path = "src/bin/run_timing_sweep.rs"
+
+[dependencies]
+rand = "0.8"
+serde = "1.0"
+serde_json = "1.0"
+petgraph = "0.6"

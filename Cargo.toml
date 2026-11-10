@@ -1,0 +1,15 @@
+[workspace]
+members = [
+    "crates/dstem",
+    "crates/sim",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+authors = ["Ritesh Das <polynsominiac@gmail.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Dyslex7c/eth-dstem"
+homepage = "https://github.com/Dyslex7c/eth-dstem"
