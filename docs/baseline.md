@@ -1,4 +1,4 @@
-Sources: [S14] local model — `sim/src/bin/run_baseline.rs`, `sim/src/gossip.rs:18-60`, `sim/src/adversary/first_spy.rs:14-27`; [S15] experiment inputs below (user-specified, not client defaults).
+Sources: [S14] local model — `crates/sim/src/bin/run_baseline.rs`, `crates/sim/src/gossip.rs:18-60`, `crates/sim/src/adversary/first_spy.rs:14-27`; [S15] experiment inputs below (user-specified, not client defaults).
 
 # Baseline: first-spy deanonymization of unmitigated eth/68 gossip (simulated)
 
@@ -14,7 +14,7 @@ Every trial had at least one Sybil observation. Detection times are simulated, s
 
 **Mechanism.** Per row, correct trials exactly equal the trials where the origin had a Sybil as a direct peer (44/68/89 of 100). This follows from the model. Only the origin's sends arrive at t = 10 ms, and every direct peer receives a `DeliverTx` or `AnnounceHash` then, so an adjacent Sybil always attributes the tx to the origin. With no adjacent Sybil, the first observation must come from a relay. In this model, precision is therefore P(origin has ≥ 1 Sybil neighbor). The hash/body split gives no protection, because an announcement reveals the sender as fast as a body does.
 
-**Provenance.** The 10% precision is printed by the committed binary: `cargo run --manifest-path sim/Cargo.toml --bin run_baseline` → `100,10,0.680000`. The 5%/20% rows, detection times, CIs, and adjacency counts came from an uncommitted scratch copy of that binary. Its only changes: `SYBIL_PCT` is a parameter and it returns the first-observation time. It reproduced `0.680000` at 10% exactly. TODO: add a `--sybil-pct` sweep and timing column to `run_baseline` so every row is reproducible from the repo.
+**Provenance.** The 10% precision is printed by the committed binary: `cargo run --manifest-path crates/sim/Cargo.toml --bin run_baseline` → `100,10,0.680000`. The 5%/20% rows, detection times, CIs, and adjacency counts came from an uncommitted scratch copy of that binary. Its only changes: `SYBIL_PCT` is a parameter and it returns the first-observation time. It reproduced `0.680000` at 10% exactly. TODO: add a `--sybil-pct` sweep and timing column to `run_baseline` so every row is reproducible from the repo.
 
 **Limits.** No client fetch timers (geth `txArriveTimeout = 500 ms`, see `docs/eth68-propagation.md`), latency jitter, pool admission, NAT/inbound asymmetry, or adaptive adversary are modelled. Single seed; n = 100 per row.
 

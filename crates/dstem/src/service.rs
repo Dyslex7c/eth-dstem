@@ -1,4 +1,4 @@
-//! Sources: [S1] stem coin + fail-safe; [S14] sim/src/stem/config.rs:12. `Ok(None)` = fluff.
+//! Sources: [S1] stem coin + fail-safe; [S14] crates/sim/src/stem/config.rs:12. `Ok(None)` = fluff.
 use crate::{peers::PeerRegistry, route::StemRouteTable, tracker::*, types::*};
 use std::{sync::OnceLock, time::Instant};
 pub const FAIL_SAFE_TIMEOUT_MS: u64 = 8_000;

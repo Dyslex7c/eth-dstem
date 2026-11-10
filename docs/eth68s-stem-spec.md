@@ -1,4 +1,4 @@
-Sources: [S4] devp2p `caps/eth.md` (master = eth/72): Status `0x00`, `0x08`–`0x0a`, Transaction Exchange, Change Log eth/68 — verified 2026-10-27. [S5] EIP-5793. [S11] devp2p `rlpx.md`: Capability Messaging, Message ID-based Multiplexing, Hello `0x00`, Disconnect `0x01` — verified 2026-10-27. [S12] RLP. [S6] go-ethereum `d01e869d59696d915410b0b5bc374ae1a8b9418e`: `eth/protocols/eth/protocol.go:33-49`, `eth/protocols/eth/handler.go:301-304`, `p2p/peer.go:43,437-460` — verified. [S1] Dandelion++ (stem/fluff concept; to-verify). [S14] `sim/` model and `docs/benchmarks-and-results.md`.
+Sources: [S4] devp2p `caps/eth.md` (master = eth/72): Status `0x00`, `0x08`–`0x0a`, Transaction Exchange, Change Log eth/68 — verified 2026-10-27. [S5] EIP-5793. [S11] devp2p `rlpx.md`: Capability Messaging, Message ID-based Multiplexing, Hello `0x00`, Disconnect `0x01` — verified 2026-10-27. [S12] RLP. [S6] go-ethereum `d01e869d59696d915410b0b5bc374ae1a8b9418e`: `eth/protocols/eth/protocol.go:33-49`, `eth/protocols/eth/handler.go:301-304`, `p2p/peer.go:43,437-460` — verified. [S1] Dandelion++ (stem/fluff concept; to-verify). [S14] `crates/sim/` model and `docs/benchmarks-and-results.md`.
 
 # eth/68s — stem-phase extension for `eth` (status: draft proposal)
 
@@ -15,7 +15,7 @@ Sources: [S4] devp2p `caps/eth.md` (master = eth/72): Status `0x00`, `0x08`–`0
 - MUST carry exactly **one** entry (project design rule: batching would link txs to one origin). Type `0x03` (blob) entries MUST NOT be stemmed; receivers discard them (blob interaction: `unknown`).
 - **Sender:** sends to exactly one peer of its current stem set (≤ `stem_degree` eth68s peers, default 2 in [S14]; epoch rotation period `unknown`, TODO(verify) [S1]).
 - **Receiver:** fetches the body via eth `0x09` from the sender and validates it like any pooled tx [S4]. While the tx is in stem it MUST NOT relay it via eth `0x02`/`0x08`, MUST omit it from the new-connection pool-sync `0x08` [S4 Transaction Exchange], and MUST skip it when answering other peers' `0x09` (skipping is permitted [S4 `0x0a`]).
-- **Relay step, per tx:** with probability `p` (default 0.90 [S14]) send one `0x0b` to one of its own stem peers; otherwise **fluff**, i.e. relay normally via eth, after which the tx is ordinary pool content. Phase is per-tx and one-way: a node that has fluffed the tx, or seen it via eth `0x02`/`0x08`, never stems it again. Without this rule fluff does not flood, as found in [S14] `sim/src/harness.rs`.
+- **Relay step, per tx:** with probability `p` (default 0.90 [S14]) send one `0x0b` to one of its own stem peers; otherwise **fluff**, i.e. relay normally via eth, after which the tx is ordinary pool content. Phase is per-tx and one-way: a node that has fluffed the tx, or seen it via eth `0x02`/`0x08`, never stems it again. Without this rule fluff does not flood, as found in [S14] `crates/sim/src/harness.rs`.
 - A duplicate `0x0b` for a tx already held is ignored (not forwarded), preventing loops.
 - **Fail-safe:** on forwarding, arm a timer `T`; if the tx is not seen via eth `0x02`/`0x08` before `T`, fluff it. `T = 8000 ms` is a model input [S14], not a sourced constant; in simulation it sets the P95 latency penalty (~8.1 s, `docs/benchmarks-and-results.md`). Mainnet value: `unknown`.
 
@@ -42,7 +42,7 @@ Per tx, one local variable `phase ∈ {STEM, FLUFFED}` plus one timer; the wire 
 | STEM | duplicate `0x0b` for a tx already held | ignore; do not forward; timer unchanged | STEM |
 | FLUFFED | later `0x0b` or duplicate eth relay | normal eth behaviour; never re-enter stem | FLUFFED |
 
-**Constants.** `p = 0.90`, so fluff probability `1 - p = 0.10`; `T = 8000 ms` (8.0 s); `stem_degree = 2`. All are model inputs [S14 `sim/src/stem/config.rs`], not sourced protocol constants; mainnet values `unknown`. One fresh `u` per relay decision makes pre-fluff path length geometric with mean `1/(1-p) = 10` hops — the model's expectation, not a measured guarantee.
+**Constants.** `p = 0.90`, so fluff probability `1 - p = 0.10`; `T = 8000 ms` (8.0 s); `stem_degree = 2`. All are model inputs [S14 `crates/sim/src/stem/config.rs`], not sourced protocol constants; mainnet values `unknown`. One fresh `u` per relay decision makes pre-fluff path length geometric with mean `1/(1-p) = 10` hops — the model's expectation, not a measured guarantee.
 **Timer start.** Armed at the forwarder when the forward decision is made (`t_arm = t_decision`, not on delivery); deadline `= t_arm + T`. Per forwarder per tx, at most one armed timer; re-arming forbidden.
 
 **Invariants.**

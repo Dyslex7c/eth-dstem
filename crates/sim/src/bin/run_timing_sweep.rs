@@ -1,4 +1,4 @@
-//! Sources: [S14] `sim/src/harness.rs` model + `sim/src/adversary/timing.rs:22-58`
+//! Sources: [S14] `crates/sim/src/harness.rs` model + `crates/sim/src/adversary/timing.rs:22-58`
 //! (shortest-path arrival ML); [S15] 200 nodes, 25 paired trials per protocol. Error
 //! distance = BFS hops from the ML estimate to the true origin. Trials with no Sybil
 //! observation carry no estimate, so they are excluded from the mean.

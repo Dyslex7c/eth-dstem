@@ -1,4 +1,4 @@
-Sources: [S14] `sim/src/harness.rs`, `sim/src/stem/*`; [S15] `docs/benchmarks-and-results.md:7-19`; [S16] `docs/eth68s-stem-spec.md`, `docs/security-analysis.md`, `docs/eth68-propagation.md`.
+Sources: [S14] `crates/sim/src/harness.rs`, `crates/sim/src/stem/*`; [S15] `docs/benchmarks-and-results.md:7-19`; [S16] `docs/eth68s-stem-spec.md`, `docs/security-analysis.md`, `docs/eth68-propagation.md`.
 
 # Executive Summary — Origin-Private Transaction Propagation on Ethereum EL
 

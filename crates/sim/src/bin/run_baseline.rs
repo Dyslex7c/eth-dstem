@@ -1,4 +1,4 @@
-#![doc = "Sources: [S14] local model: sim/src/gossip.rs:18-60, sim/src/engine.rs:15-24, sim/src/adversary/first_spy.rs:14-27; [S15] user-specified experiment: 100 trials, 200 nodes, 10% Sybils.
+#![doc = "Sources: [S14] local model: crates/sim/src/gossip.rs:18-60, crates/sim/src/engine.rs:15-24, crates/sim/src/adversary/first_spy.rs:14-27; [S15] user-specified experiment: 100 trials, 200 nodes, 10% Sybils.
 [S14]/[S15] are local source IDs. Peer cap, latency, and seed are experiment inputs, not client defaults.
 The model uses constant hop latency, immediate hash fetches, and passive colluding Sybils following normal relay behavior. It omits client fetch timers, pool admission, and queue limits; correspondence to real Ethereum origin leakage is unknown."]
 

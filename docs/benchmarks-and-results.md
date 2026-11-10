@@ -1,4 +1,4 @@
-Sources: [S14] `sim/src/harness.rs`, `sim/src/adversary/timing.rs:22-58`, `sim/src/bin/run_sybil_sweep.rs`, `sim/src/bin/run_timing_sweep.rs`; [S15] 200-node graph, 50 paired trials per Sybil fraction, `MODEL_SEED`.
+Sources: [S14] `crates/sim/src/harness.rs`, `crates/sim/src/adversary/timing.rs:22-58`, `crates/sim/src/bin/run_sybil_sweep.rs`, `crates/sim/src/bin/run_timing_sweep.rs`; [S15] 200-node graph, 50 paired trials per Sybil fraction, `MODEL_SEED`.
 
 # Benchmarks & Results (simulated — not a mainnet measurement)
 

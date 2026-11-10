@@ -1,4 +1,4 @@
-Sources: [S14] `sim/src/stem/config.rs:3-13`, `sim/src/stem/failsafe.rs:14-27`, `sim/src/stem/fallback.rs:5-21`, `sim/src/stem/digraph.rs:10-19,28-33`, `sim/src/harness.rs:355-373`; [S15] `docs/benchmarks-and-results.md:7-19`; `docs/eth68s-stem-spec.md:13-20,30-54`.
+Sources: [S14] `crates/sim/src/stem/config.rs:3-13`, `crates/sim/src/stem/failsafe.rs:14-27`, `crates/sim/src/stem/fallback.rs:5-21`, `crates/sim/src/stem/digraph.rs:10-19,28-33`, `crates/sim/src/harness.rs:355-373`; [S15] `docs/benchmarks-and-results.md:7-19`; `docs/eth68s-stem-spec.md:13-20,30-54`.
 
 # Security Analysis — eth/68s Stem Phase
 

@@ -1,5 +1,5 @@
 //! Sources: [S14] local model — graph construction, hop latency, and the two-hop hash
-//! fetch are identical to `sim/src/bin/run_baseline.rs:23-92`; [S15] experiment inputs:
+//! fetch are identical to `crates/sim/src/bin/run_baseline.rs:23-92`; [S15] experiment inputs:
 //! 100 trials, 200 nodes, 10% Sybils. These are model inputs, not client defaults, and
 //! correspondence to real Ethereum origin leakage is `unknown`.
 

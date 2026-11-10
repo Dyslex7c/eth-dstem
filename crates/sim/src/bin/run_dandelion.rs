@@ -1,8 +1,8 @@
-//! Sources: [S14] local model — `sim/src/harness.rs` (graph, hop latency, and two-hop hash
-//! fetch identical to `sim/src/bin/run_baseline.rs:23-92`); [S15] 100 trials, 200 nodes, 10%
+//! Sources: [S14] local model — `crates/sim/src/harness.rs` (graph, hop latency, and two-hop hash
+//! fetch identical to `crates/sim/src/bin/run_baseline.rs:23-92`); [S15] 100 trials, 200 nodes, 10%
 //! Sybils. `avg_latency_ms` is the mean simulated time to the first Sybil observation, not
 //! end-to-end propagation. Graphs, origins, and tx hashes are seeded and identical for both
-//! rows; the Dandelion++ coin comes from `thread_rng` (`sim/src/stem/lifecycle.rs:21`), so
+//! rows; the Dandelion++ coin comes from `thread_rng` (`crates/sim/src/stem/lifecycle.rs:21`), so
 //! that row varies between runs. Real-network leakage is `unknown`.
 
 use eth_tx_sim::harness::{run_experiment, Protocol, SYBIL_PCT};

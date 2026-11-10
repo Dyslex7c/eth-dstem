@@ -1,4 +1,4 @@
-//! Sources: [S14] `sim/src/harness.rs` model; [S15] 200 nodes, 50 paired trials per fraction.
+//! Sources: [S14] `crates/sim/src/harness.rs` model; [S15] 200 nodes, 50 paired trials per fraction.
 //! Latency = mean ms to first Sybil observation (0 if none); stem coin uses `thread_rng`.
 use eth_tx_sim::harness::{random_topology, run_trial, Protocol::*, MODEL_SEED, NETWORK_SIZE};
 use eth_tx_sim::node::NodeType::{Honest, Sybil, Target};
